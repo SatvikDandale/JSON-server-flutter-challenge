@@ -125,7 +125,7 @@ dbRouter.post("/post", async (request, response, _) => {
 
 })
 
-dbRouter.post("/post", async (request, response, _) => {
+dbRouter.post("/deletePost", async (request, response, _) => {
     let post = request.body;
     db.run("DELETE FROM posts WHERE id = ?", [post.id], (error) => {
         if (error) {
