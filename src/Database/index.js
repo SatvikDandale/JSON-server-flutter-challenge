@@ -124,6 +124,17 @@ dbRouter.post("/post", async (request, response, _) => {
     });
 
 })
+
+dbRouter.delete("/post", async (request, response, _) => {
+    let post = request.body;
+    db.run("DELETE FROM posts WHERE id = ?", [post.id], (error) => {
+        if (error) {
+            console.log(error)
+        }
+        response.status(202).send();
+    })
+})
+
 dbRouter.post("/comment", async (request, response, _) => {
     let comment = request.body;
     // db.serialize(function () {
@@ -140,6 +151,7 @@ dbRouter.post("/comment", async (request, response, _) => {
     });
 
 })
+
 
 
 module.exports = {
